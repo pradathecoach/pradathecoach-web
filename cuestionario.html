@@ -163,24 +163,33 @@ function compressImg(file,max,q){return new Promise(function(resolve){
 });
 
 var form=document.getElementById('form');var submitting=false;
+function withTimeout(promise,ms){return Promise.race([promise,new Promise(function(r){setTimeout(function(){r(null);},ms);})]);}
 form.addEventListener('submit',async function(e){
   if(submitting)return;                 // deja pasar el envío nativo
   e.preventDefault();
   if(!document.getElementById('agree').checked)return;
   var btn=document.getElementById('submit');btn.disabled=true;
-  document.getElementById('sendmsg').textContent=(document.documentElement.lang==='en'?'Sending your info and photos…':'Enviando tu info y fotos…');
+  var sm=document.getElementById('sendmsg');
+  sm.textContent=(document.documentElement.lang==='en'?'Sending your info and photos…':'Enviando tu info y fotos…');
   var inputs=[document.querySelector('[name=Foto_frente]'),document.querySelector('[name=Foto_lado]'),document.querySelector('[name=Foto_espalda]')];
-  try{
-    for(var i=0;i<inputs.length;i++){
-      var inp=inputs[i];
-      if(inp&&inp.files&&inp.files[0]){
-        var cf=await compressImg(inp.files[0],1280,0.8);
-        try{var dt=new DataTransfer();dt.items.add(cf);inp.files=dt.files;}catch(err){}
-      }
+  // comprime las 3 en paralelo, con tope de tiempo para que NUNCA se cuelgue
+  var tasks=inputs.map(function(inp){
+    if(inp&&inp.files&&inp.files[0]){
+      return withTimeout(compressImg(inp.files[0],1024,0.72),4000).then(function(cf){
+        if(cf){try{var dt=new DataTransfer();dt.items.add(cf);inp.files=dt.files;}catch(e){}}
+      });
     }
-  }catch(err){}
+    return Promise.resolve();
+  });
+  try{await Promise.all(tasks);}catch(err){}
   submitting=true;
-  form.submit();                        // POST real multipart a FormSubmit
+  try{form.submit();}catch(err){try{HTMLFormElement.prototype.submit.call(form);}catch(e2){}}
+  // red de seguridad: si en 9s seguimos aquí, reactiva para reintentar
+  setTimeout(function(){
+    btn.disabled=false;
+    sm.innerHTML=(document.documentElement.lang==='en'?'Still here? <a href="#" id="retry" style="color:#C6FF3D">Tap to send again</a>':'¿Sigues aquí? <a href="#" id="retry" style="color:#C6FF3D">Toca para reenviar</a>');
+    var r=document.getElementById('retry');if(r)r.addEventListener('click',function(ev){ev.preventDefault();submitting=true;form.submit();});
+  },9000);
 });
 
 /* === i18n ES/EN === */
