@@ -27,15 +27,23 @@ h1 .v{color:var(--volt)}
 .f select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%238B949B' fill='none' stroke-width='2'/></svg>");background-repeat:no-repeat;background-position:right 14px center}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:560px){.row{grid-template-columns:1fr}}
-.agree{display:flex;gap:12px;align-items:flex-start;background:#0E1217;border:1px solid var(--line);border-radius:12px;padding:14px;font-size:13px;color:var(--mu)}
+.photos{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px}
+@media(max-width:560px){.photos{grid-template-columns:1fr}}
+.ph{background:#0E1217;border:1px dashed var(--line);border-radius:12px;padding:14px 10px;text-align:center;cursor:pointer;transition:border-color .2s}
+.ph:hover{border-color:var(--volt)}
+.ph.ok{border-style:solid;border-color:var(--volt)}
+.ph .ic{font-size:22px}
+.ph .t{font-size:13px;font-weight:600;margin-top:4px}
+.ph .s{font-size:11px;color:var(--mu);margin-top:2px}
+.ph.ok .s{color:var(--volt)}
+.ph input{display:none}
+.agree{display:flex;gap:12px;align-items:flex-start;background:#0E1217;border:1px solid var(--line);border-radius:12px;padding:14px;font-size:13px;color:var(--mu);margin-top:16px}
 .agree input{margin-top:3px;width:20px;height:20px;accent-color:var(--volt);flex:none}
 .btn{display:block;width:100%;text-align:center;font-family:var(--head);text-transform:uppercase;letter-spacing:1px;font-weight:600;font-size:17px;padding:16px;border-radius:13px;background:var(--volt);color:#0A0D10;border:0;margin-top:18px;cursor:pointer;transition:transform .2s}
 .btn:hover{transform:translateY(-2px)}.btn:disabled{opacity:.5;cursor:not-allowed}
 .foot{text-align:center;color:var(--mu);font-family:var(--mono);font-size:12px;margin-top:22px}
 .foot a{color:var(--volt);text-decoration:none}
-.note{font-size:12px;color:var(--mu);margin-top:6px}
-#done{display:none;text-align:center;padding:30px 0}
-#done .ic{font-size:48px}
+.note{font-size:12px;color:var(--mu);margin-top:8px}
 </style></head><body>
 <div class="bgfx"></div>
 <button class="lang" id="lang" type="button">EN</button>
@@ -43,9 +51,15 @@ h1 .v{color:var(--volt)}
   <div class="eyebrow" data-t="eb">Paso final</div>
   <h1 data-t="h1">Tu <span class="v">cuestionario</span></h1>
   <p class="sub" data-t="sub">Esta info es con la que Mario arma tu plan 100% personalizado. Tómate tu tiempo y llénalo a conciencia — son ~5 minutos.</p>
-  <div class="prog" data-t="prog">6 bloques · al terminar, hablas con Mario por WhatsApp</div>
+  <div class="prog" data-t="prog">6 bloques · todos los campos con * son obligatorios</div>
 
-  <form id="form">
+  <form id="form" action="https://formsubmit.co/prada@pradathecoach.com" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="_subject" value="Nuevo cuestionario - Prada The Coach">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="https://pradathecoach.com/gracias.html">
+    <input type="text" name="_honey" style="display:none">
+
     <div class="block"><div class="bn">Bloque 1</div><h2 data-t="b1">Quién eres</h2>
       <div class="row">
         <div class="f"><label data-t="q1">Nombre completo <span class="req">*</span></label><input type="text" name="Nombre" required></div>
@@ -71,9 +85,15 @@ h1 .v{color:var(--volt)}
       <div class="f"><label data-t="q11">En una frase: ¿cómo te quieres ver y sentir en 90 días? <span class="req">*</span></label><input type="text" name="Meta_90dias" required></div>
     </div>
 
-    <div class="block"><div class="bn">Bloque 3</div><h2 data-t="b3">Medidas</h2>
+    <div class="block"><div class="bn">Bloque 3</div><h2 data-t="b3">Medidas y fotos</h2>
       <div class="f"><label data-t="q12">Medidas en cm — Cintura / Cadera / Pecho / Brazo / Muslo</label><input type="text" name="Medidas" placeholder="Ej: 85 / 100 / 102 / 38 / 58"></div>
-      <p class="note" data-t="fotonote">📸 Las 3 fotos (frente, lado y espalda) me las envías por WhatsApp apenas termines — te lo recuerdo ahí.</p>
+      <label style="display:block;font-size:14px;font-weight:500;margin-top:16px" data-t="fotolbl">3 fotos obligatorias — ropa deportiva ajustada, buena luz <span class="req">*</span></label>
+      <div class="photos">
+        <label class="ph" id="ph1"><input type="file" name="Foto_frente" accept="image/*" required><div class="ic">📸</div><div class="t" data-t="pf1">Frente</div><div class="s" data-t="phs">Toca para subir</div></label>
+        <label class="ph" id="ph2"><input type="file" name="Foto_lado" accept="image/*" required><div class="ic">📸</div><div class="t" data-t="pf2">Lado</div><div class="s" data-t="phs">Toca para subir</div></label>
+        <label class="ph" id="ph3"><input type="file" name="Foto_espalda" accept="image/*" required><div class="ic">📸</div><div class="t" data-t="pf3">Espalda</div><div class="s" data-t="phs">Toca para subir</div></label>
+      </div>
+      <p class="note" data-t="fotonote">🔒 Tus fotos son privadas y solo las usa Mario para tu seguimiento. Se envían de forma segura con el formulario.</p>
     </div>
 
     <div class="block"><div class="bn">Bloque 4</div><h2 data-t="b4">Entrenamiento</h2>
@@ -93,7 +113,7 @@ h1 .v{color:var(--volt)}
       <div class="f"><label data-t="q24">¿Cuánta agua tomas al día?</label><input type="text" name="Agua"></div>
     </div>
 
-    <div class="block"><div class="bn">Bloque 6</div><h2 data-t="b6">Tu cabeza y tu compromiso</h2>
+    <div class="block"><div class="bn">Bloque 6</div><h2 data-t="b6">Tu compromiso</h2>
       <div class="f"><label data-t="q25">¿Qué te ha frenado antes para lograr tu objetivo?</label><textarea name="Que_te_freno"></textarea></div>
       <div class="f"><label data-t="q26">Del 1 al 10, ¿qué tan comprometido estás ahora? <span class="req">*</span></label><input type="number" name="Compromiso" min="1" max="10" required></div>
       <div class="f"><label data-t="q27">Algo más que Mario deba saber de ti (opcional)</label><textarea name="Extra"></textarea></div>
@@ -101,66 +121,85 @@ h1 .v{color:var(--volt)}
 
     <label class="agree"><input type="checkbox" id="agree" required><span data-t="agree">Autorizo a Prada The Coach a usar mi información y mis fotos para diseñar, ajustar y dar seguimiento a mi plan personalizado. Entiendo que es un servicio de coaching y no reemplaza la consulta médica. Confirmo que la información es verídica.</span></label>
 
-    <button class="btn" id="submit" type="submit" data-t="send">Enviar y hablar con Mario →</button>
-    <p class="note" style="text-align:center" data-t="sending" id="sendmsg"></p>
+    <button class="btn" id="submit" type="submit" data-t="send">Enviar mi cuestionario →</button>
+    <p class="note" style="text-align:center" id="sendmsg"></p>
   </form>
-
-  <div id="done">
-    <div class="ic">✅</div>
-    <h1 data-t="d1">¡Listo!</h1>
-    <p class="sub" data-t="d2">Te estoy llevando a WhatsApp con Mario para que le mandes tus 3 fotos y arranquen. Si no abre solo, toca el botón.</p>
-    <a class="btn" id="wa" href="#" data-t="d3">Abrir WhatsApp →</a>
-  </div>
 
   <div class="foot" data-t="foot">Prada The Coach · <a href="mailto:prada@pradathecoach.com">prada@pradathecoach.com</a></div>
 </div>
 
 <script>
-/* === CONFIG === */
-const WHATSAPP="14072830179";               // número de Mario (solo se usa al final)
-const FORMSPREE="https://formspree.io/f/REEMPLAZAR"; // <-- pega aquí tu endpoint de Formspree
+/* === compresión de fotos en el teléfono antes de enviar === */
+function compressImg(file,max,q){return new Promise(function(resolve){
+  if(!file||!file.type||file.type.indexOf('image/')!==0){resolve(file);return;}
+  try{
+    var img=new Image();var url=URL.createObjectURL(file);
+    img.onload=function(){
+      var w=img.width,h=img.height;
+      if(w>h&&w>max){h=Math.round(h*max/w);w=max;}
+      else if(h>=w&&h>max){w=Math.round(w*max/h);h=max;}
+      var c=document.createElement('canvas');c.width=w;c.height=h;
+      c.getContext('2d').drawImage(img,0,0,w,h);
+      URL.revokeObjectURL(url);
+      c.toBlob(function(blob){
+        if(!blob){resolve(file);return;}
+        try{resolve(new File([blob],(file.name.replace(/\.[^.]+$/,'')||'foto')+'.jpg',{type:'image/jpeg'}));}
+        catch(e){resolve(file);}
+      },'image/jpeg',q);
+    };
+    img.onerror=function(){URL.revokeObjectURL(url);resolve(file);};
+    img.src=url;
+  }catch(e){resolve(file);}
+});}
 
-const form=document.getElementById('form');
+/* marca las tarjetas de foto cuando se sube una */
+['ph1','ph2','ph3'].forEach(function(id){
+  var box=document.getElementById(id);var inp=box.querySelector('input');
+  inp.addEventListener('change',function(){
+    var s=box.querySelector('.s');
+    if(inp.files&&inp.files[0]){box.classList.add('ok');s.textContent=(document.documentElement.lang==='en'?'Loaded ✓':'Cargada ✓');}
+    else{box.classList.remove('ok');s.textContent=(document.documentElement.lang==='en'?'Tap to upload':'Toca para subir');}
+  });
+});
+
+var form=document.getElementById('form');var submitting=false;
 form.addEventListener('submit',async function(e){
+  if(submitting)return;                 // deja pasar el envío nativo
   e.preventDefault();
   if(!document.getElementById('agree').checked)return;
-  const btn=document.getElementById('submit');btn.disabled=true;
-  document.getElementById('sendmsg').textContent='Enviando…';
-  const data=new FormData(form);
-  const nombre=data.get('Nombre')||'';const obj=data.get('Objetivo')||'';
-  // intenta enviar a Formspree (correo a Mario)
+  var btn=document.getElementById('submit');btn.disabled=true;
+  document.getElementById('sendmsg').textContent=(document.documentElement.lang==='en'?'Sending your info and photos…':'Enviando tu info y fotos…');
+  var inputs=[document.querySelector('[name=Foto_frente]'),document.querySelector('[name=Foto_lado]'),document.querySelector('[name=Foto_espalda]')];
   try{
-    if(FORMSPREE.indexOf('REEMPLAZAR')===-1){
-      await fetch(FORMSPREE,{method:'POST',body:data,headers:{'Accept':'application/json'}});
+    for(var i=0;i<inputs.length;i++){
+      var inp=inputs[i];
+      if(inp&&inp.files&&inp.files[0]){
+        var cf=await compressImg(inp.files[0],1280,0.8);
+        try{var dt=new DataTransfer();dt.items.add(cf);inp.files=dt.files;}catch(err){}
+      }
     }
   }catch(err){}
-  // mensaje de WhatsApp con resumen + pedido de fotos
-  const msg="Hola Mario, soy "+nombre+". Acabo de terminar mi cuestionario (objetivo: "+obj+"). Aqui van mis 3 fotos: frente, lado y espalda 📸";
-  const wa="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg);
-  document.getElementById('wa').setAttribute('href',wa);
-  form.style.display='none';
-  document.getElementById('done').style.display='block';
-  window.scrollTo({top:0,behavior:'smooth'});
-  setTimeout(function(){location.href=wa;},1200);
+  submitting=true;
+  form.submit();                        // POST real multipart a FormSubmit
 });
 
 /* === i18n ES/EN === */
-const EN={
+var EN={
  "eb":"Final step","h1":'Your <span class="v">questionnaire</span>',
  "sub":"This is what Mario uses to build your 100% personalized plan. Take your time and fill it out honestly — about 5 minutes.",
- "prog":"6 blocks · when you finish, you talk to Mario on WhatsApp",
+ "prog":"6 blocks · every field with * is required",
  "b1":"Who you are","q1":"Full name <span class='req'>*</span>","q2":"Email <span class='req'>*</span>","q3":"WhatsApp (with country code) <span class='req'>*</span>","q4":"Country and city <span class='req'>*</span>","q5":"Age <span class='req'>*</span>","q6":"Sex <span class='req'>*</span>","sel":"Choose…","hombre":"Male","mujer":"Female",
  "b2":"Your body and goal","q7":"Height (cm or ft) <span class='req'>*</span>","q8":"Current weight <span class='req'>*</span>","q9":"Main goal <span class='req'>*</span>","o1":"Lose fat","o2":"Build muscle","o3":"Recomposition","o4":"Performance","o5":"Compete","o6":"Health & habits","q10":"Any target date or event? (optional)","q11":"In one sentence: how do you want to look and feel in 90 days? <span class='req'>*</span>",
- "b3":"Measurements","q12":"Measurements in cm — Waist / Hips / Chest / Arm / Thigh","fotonote":"📸 You'll send me the 3 photos (front, side, back) on WhatsApp right after you finish — I'll remind you there.",
+ "b3":"Measurements & photos","q12":"Measurements in cm — Waist / Hips / Chest / Arm / Thigh","fotolbl":"3 required photos — tight sportswear, good light <span class='req'>*</span>","pf1":"Front","pf2":"Side","pf3":"Back","phs":"Tap to upload","fotonote":"🔒 Your photos are private and used only by Mario for your tracking. They are sent securely with the form.",
  "b4":"Training","q16":"Training experience <span class='req'>*</span>","e1":"Beginner","e2":"Intermediate","e3":"Advanced","q17":"Where will you train and what equipment do you have? <span class='req'>*</span>","q18":"How many days a week can you train? <span class='req'>*</span>","q19":"Any injury, discomfort or medical condition I should know?",
  "b5":"Nutrition & lifestyle","q20":"What times do you usually eat? (your routine)","q21":"Allergies, intolerances or foods you DON'T eat?","q22":"How well do you sleep?","s1":"Well 7-8h","s2":"OK 5-6h","s3":"Poorly under 5h","q23":"Daily stress level","st1":"Low","st2":"Medium","st3":"High","q24":"How much water do you drink per day?",
- "b6":"Your mindset & commitment","q25":"What has held you back before?","q26":"From 1 to 10, how committed are you right now? <span class='req'>*</span>","q27":"Anything else Mario should know (optional)",
+ "b6":"Your commitment","q25":"What has held you back before?","q26":"From 1 to 10, how committed are you right now? <span class='req'>*</span>","q27":"Anything else Mario should know (optional)",
  "agree":"I authorize Prada The Coach to use my information and photos to design, adjust and track my personalized plan. I understand this is a coaching service and does not replace medical advice. I confirm the information is true.",
- "send":"Submit and talk to Mario →","d1":"Done!","d2":"I'm taking you to WhatsApp with Mario so you can send your 3 photos and get started. If it doesn't open, tap the button.","d3":"Open WhatsApp →",
+ "send":"Send my questionnaire →",
  "foot":'Prada The Coach · <a href="mailto:prada@pradathecoach.com">prada@pradathecoach.com</a>'
 };
-const _es=new Map();document.querySelectorAll('[data-t]').forEach(e=>_es.set(e,e.innerHTML));
-function ap(l){document.querySelectorAll('[data-t]').forEach(e=>{const k=e.getAttribute('data-t');e.innerHTML=(l==='en'&&EN[k]!=null)?EN[k]:_es.get(e);});document.documentElement.lang=l;var b=document.getElementById('lang');if(b)b.textContent=l==='en'?'ES':'EN';try{localStorage.setItem('ptc_lang',l);}catch(e){}}
+var _es=new Map();document.querySelectorAll('[data-t]').forEach(function(e){_es.set(e,e.innerHTML);});
+function ap(l){document.querySelectorAll('[data-t]').forEach(function(e){var k=e.getAttribute('data-t');e.innerHTML=(l==='en'&&EN[k]!=null)?EN[k]:_es.get(e);});document.documentElement.lang=l;var b=document.getElementById('lang');if(b)b.textContent=l==='en'?'ES':'EN';try{localStorage.setItem('ptc_lang',l);}catch(e){}}
 (function(){var l=null;try{l=localStorage.getItem('ptc_lang');}catch(e){}if(!l){l=((navigator.language||'').toLowerCase().indexOf('es')===0)?'es':'en';}var b=document.getElementById('lang');if(b)b.addEventListener('click',function(){ap(document.documentElement.lang==='en'?'es':'en');});ap(l);})();
 </script>
 </body></html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0A0D10">
+<title>¡Listo! · Prada The Coach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--line:#242C33;--volt:#C6FF3D;--tx:#F2F4F0;--mu:#8B949B;--head:'Oswald',sans-serif;--body:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#080B0A;color:var(--tx);font-family:var(--body);line-height:1.55;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;overflow-x:hidden}
+.bgfx{position:fixed;inset:0;z-index:-1;background:radial-gradient(900px 620px at 86% -6%,rgba(198,255,61,.12),transparent 60%),radial-gradient(820px 640px at -6% 106%,rgba(61,160,255,.12),transparent 60%),linear-gradient(180deg,#070C0A,#0A0D10 42%,#080B10)}
+.lang{position:fixed;top:14px;right:14px;font-family:var(--mono);font-size:12px;letter-spacing:1px;color:var(--volt);background:transparent;border:1px solid var(--line);border-radius:9px;padding:7px 11px;cursor:pointer}
+.card{max-width:520px}
+.ic{font-size:56px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--volt);margin-top:8px}
+h1{font-family:var(--head);text-transform:uppercase;font-size:clamp(30px,7vw,46px);line-height:1.04;margin:6px 0 10px}
+h1 .v{color:var(--volt)}
+p{color:var(--mu);font-size:16px;margin:0 auto 10px;max-width:440px}
+.steps{text-align:left;background:rgba(17,22,28,.72);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin:20px 0;font-size:14px}
+.steps div{margin:8px 0;padding-left:26px;position:relative}
+.steps div::before{content:attr(data-n);position:absolute;left:0;top:0;width:18px;height:18px;background:var(--volt);color:#0A0D10;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:var(--mono)}
+.btn{display:inline-block;font-family:var(--head);text-transform:uppercase;letter-spacing:1px;font-weight:600;font-size:16px;padding:15px 28px;border-radius:13px;background:var(--volt);color:#0A0D10;text-decoration:none;margin-top:6px}
+.foot{font-family:var(--mono);font-size:12px;color:var(--mu);margin-top:20px}
+.foot a{color:var(--volt);text-decoration:none}
+</style></head><body>
+<div class="bgfx"></div>
+<button class="lang" id="lang" type="button">EN</button>
+<div class="card">
+  <div class="ic">✅</div>
+  <div class="eyebrow" data-t="eb">Cuestionario recibido</div>
+  <h1 data-t="h1">¡Ya quedaste <span class="v">dentro</span>!</h1>
+  <p data-t="p1">Recibí toda tu información y tus fotos. Ahora empieza lo bueno.</p>
+  <div class="steps">
+    <div data-n="1" data-t="s1">Reviso tu caso a fondo (cuerpo, hábitos y objetivo).</div>
+    <div data-n="2" data-t="s2">Armo tu plan 100% personalizado.</div>
+    <div data-n="3" data-t="s3">Te escribo por WhatsApp para arrancar tu proceso.</div>
+  </div>
+  <p data-t="p2">¿Quieres saludarme ya y dejar tu WhatsApp activo? Toca aquí:</p>
+  <a class="btn" href="https://wa.me/14072830179?text=Hola%20Mario%2C%20acabo%20de%20terminar%20mi%20cuestionario%20%F0%9F%92%AA" data-t="btn">Saludar a Mario por WhatsApp →</a>
+  <div class="foot" data-t="foot">Prada The Coach · <a href="mailto:prada@pradathecoach.com">prada@pradathecoach.com</a></div>
+</div>
+<script>
+var EN={
+ "eb":"Questionnaire received","h1":'You\'re <span class="v">in</span>!',
+ "p1":"I got all your information and photos. Now the good part begins.",
+ "s1":"I review your case in depth (body, habits and goal).",
+ "s2":"I build your 100% personalized plan.",
+ "s3":"I message you on WhatsApp to kick off your process.",
+ "p2":"Want to say hi now and keep your WhatsApp active? Tap here:",
+ "btn":"Say hi to Mario on WhatsApp →",
+ "foot":'Prada The Coach · <a href="mailto:prada@pradathecoach.com">prada@pradathecoach.com</a>'
+};
+var _es=new Map();document.querySelectorAll('[data-t]').forEach(function(e){_es.set(e,e.innerHTML);});
+function ap(l){document.querySelectorAll('[data-t]').forEach(function(e){var k=e.getAttribute('data-t');e.innerHTML=(l==='en'&&EN[k]!=null)?EN[k]:_es.get(e);});document.documentElement.lang=l;var b=document.getElementById('lang');if(b)b.textContent=l==='en'?'ES':'EN';try{localStorage.setItem('ptc_lang',l);}catch(e){}}
+(function(){var l=null;try{l=localStorage.getItem('ptc_lang');}catch(e){}if(!l){l=((navigator.language||'').toLowerCase().indexOf('es')===0)?'es':'en';}var b=document.getElementById('lang');if(b)b.addEventListener('click',function(){ap(document.documentElement.lang==='en'?'es':'en');});ap(l);})();
+</script>
+</body></html>
