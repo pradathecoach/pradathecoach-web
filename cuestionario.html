@@ -70,7 +70,7 @@ h1 .v{color:var(--volt)}
         <div class="f"><label data-t="q4">País y ciudad <span class="req">*</span></label><input type="text" name="Pais_Ciudad" required></div>
       </div>
       <div class="row">
-        <div class="f"><label data-t="q5">Edad <span class="req">*</span></label><input type="number" name="Edad" required></div>
+        <div class="f"><label data-t="q5">Fecha de nacimiento <span class="req">*</span></label><input type="date" name="Fecha_nacimiento" required></div>
         <div class="f"><label data-t="q6">Sexo <span class="req">*</span></label><select name="Sexo" required><option value="" data-t="sel">Elige…</option><option data-t="hombre">Hombre</option><option data-t="mujer">Mujer</option></select></div>
       </div>
     </div>
@@ -86,7 +86,7 @@ h1 .v{color:var(--volt)}
     </div>
 
     <div class="block"><div class="bn">Bloque 3</div><h2 data-t="b3">Medidas y fotos</h2>
-      <div class="f"><label data-t="q12">Medidas en cm — Cintura / Cadera / Pecho / Brazo / Muslo</label><input type="text" name="Medidas" placeholder="Ej: 85 / 100 / 102 / 38 / 58"></div>
+      <div class="f"><label data-t="q12">Medidas en cm — Cintura / Cadera / Pecho / Brazo / Muslo <span class="req">*</span></label><input type="text" name="Medidas" required placeholder="Ej: 85 / 100 / 102 / 38 / 58"></div>
       <label style="display:block;font-size:14px;font-weight:500;margin-top:16px" data-t="fotolbl">3 fotos obligatorias — ropa deportiva ajustada, buena luz <span class="req">*</span></label>
       <div class="photos">
         <label class="ph" id="ph1"><input type="file" name="Foto_frente" accept="image/*" required><div class="ic">📸</div><div class="t" data-t="pf1">Frente</div><div class="s" data-t="phs">Toca para subir</div></label>
@@ -100,21 +100,21 @@ h1 .v{color:var(--volt)}
       <div class="f"><label data-t="q16">Experiencia entrenando <span class="req">*</span></label><select name="Experiencia" required><option value="" data-t="sel">Elige…</option><option data-t="e1">Principiante</option><option data-t="e2">Intermedio</option><option data-t="e3">Avanzado</option></select></div>
       <div class="f"><label data-t="q17">¿Dónde entrenas y qué equipo tienes? <span class="req">*</span></label><input type="text" name="Equipo" required placeholder="Ej: Gimnasio completo / Pesas en casa / Mancuernas…"></div>
       <div class="f"><label data-t="q18">¿Cuántos días por semana puedes entrenar? <span class="req">*</span></label><select name="Dias" required><option value="" data-t="sel">Elige…</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
-      <div class="f"><label data-t="q19">¿Alguna lesión, molestia o condición médica que deba saber?</label><textarea name="Lesiones"></textarea></div>
+      <div class="f"><label data-t="q19">¿Alguna lesión, molestia o condición médica que deba saber? <span class="req">*</span></label><textarea name="Lesiones" required placeholder="Si no tienes, escribe: ninguna"></textarea></div>
     </div>
 
     <div class="block"><div class="bn">Bloque 5</div><h2 data-t="b5">Nutrición y estilo de vida</h2>
-      <div class="f"><label data-t="q20">¿A qué horas sueles comer? (tu rutina)</label><input type="text" name="Horarios_comida"></div>
-      <div class="f"><label data-t="q21">¿Alergias, intolerancias o alimentos que NO comes?</label><input type="text" name="Restricciones"></div>
+      <div class="f"><label data-t="q20">¿A qué horas sueles comer? (tu rutina) <span class="req">*</span></label><input type="text" name="Horarios_comida" required></div>
+      <div class="f"><label data-t="q21">¿Alergias, intolerancias o alimentos que NO comes? <span class="req">*</span></label><input type="text" name="Restricciones" required placeholder="Si no tienes, escribe: ninguna"></div>
       <div class="row">
-        <div class="f"><label data-t="q22">¿Qué tan bien duermes?</label><select name="Sueno"><option value="" data-t="sel">Elige…</option><option data-t="s1">Bien 7-8h</option><option data-t="s2">Regular 5-6h</option><option data-t="s3">Mal menos de 5h</option></select></div>
-        <div class="f"><label data-t="q23">Nivel de estrés diario</label><select name="Estres"><option value="" data-t="sel">Elige…</option><option data-t="st1">Bajo</option><option data-t="st2">Medio</option><option data-t="st3">Alto</option></select></div>
+        <div class="f"><label data-t="q22">¿Qué tan bien duermes? <span class="req">*</span></label><select name="Sueno" required><option value="" data-t="sel">Elige…</option><option data-t="s1">Bien 7-8h</option><option data-t="s2">Regular 5-6h</option><option data-t="s3">Mal menos de 5h</option></select></div>
+        <div class="f"><label data-t="q23">Nivel de estrés diario <span class="req">*</span></label><select name="Estres" required><option value="" data-t="sel">Elige…</option><option data-t="st1">Bajo</option><option data-t="st2">Medio</option><option data-t="st3">Alto</option></select></div>
       </div>
-      <div class="f"><label data-t="q24">¿Cuánta agua tomas al día?</label><input type="text" name="Agua"></div>
+      <div class="f"><label data-t="q24">¿Cuánta agua tomas al día? <span class="req">*</span></label><input type="text" name="Agua" required></div>
     </div>
 
     <div class="block"><div class="bn">Bloque 6</div><h2 data-t="b6">Tu compromiso</h2>
-      <div class="f"><label data-t="q25">¿Qué te ha frenado antes para lograr tu objetivo?</label><textarea name="Que_te_freno"></textarea></div>
+      <div class="f"><label data-t="q25">¿Qué te ha frenado antes para lograr tu objetivo? <span class="req">*</span></label><textarea name="Que_te_freno" required></textarea></div>
       <div class="f"><label data-t="q26">Del 1 al 10, ¿qué tan comprometido estás ahora? <span class="req">*</span></label><input type="number" name="Compromiso" min="1" max="10" required></div>
       <div class="f"><label data-t="q27">Algo más que Mario deba saber de ti (opcional)</label><textarea name="Extra"></textarea></div>
     </div>
@@ -196,12 +196,12 @@ var EN={
  "eb":"Final step","h1":'Your <span class="v">questionnaire</span>',
  "sub":"This is what Mario uses to build your 100% personalized plan. Take your time and fill it out honestly — about 5 minutes.",
  "prog":"6 blocks · every field with * is required",
- "b1":"Who you are","q1":"Full name <span class='req'>*</span>","q2":"Email <span class='req'>*</span>","q3":"WhatsApp (with country code) <span class='req'>*</span>","q4":"Country and city <span class='req'>*</span>","q5":"Age <span class='req'>*</span>","q6":"Sex <span class='req'>*</span>","sel":"Choose…","hombre":"Male","mujer":"Female",
+ "b1":"Who you are","q1":"Full name <span class='req'>*</span>","q2":"Email <span class='req'>*</span>","q3":"WhatsApp (with country code) <span class='req'>*</span>","q4":"Country and city <span class='req'>*</span>","q5":"Date of birth <span class='req'>*</span>","q6":"Sex <span class='req'>*</span>","sel":"Choose…","hombre":"Male","mujer":"Female",
  "b2":"Your body and goal","q7":"Height (cm or ft) <span class='req'>*</span>","q8":"Current weight <span class='req'>*</span>","q9":"Main goal <span class='req'>*</span>","o1":"Lose fat","o2":"Build muscle","o3":"Recomposition","o4":"Performance","o5":"Compete","o6":"Health & habits","q10":"Any target date or event? (optional)","q11":"In one sentence: how do you want to look and feel in 90 days? <span class='req'>*</span>",
- "b3":"Measurements & photos","q12":"Measurements in cm — Waist / Hips / Chest / Arm / Thigh","fotolbl":"3 required photos — tight sportswear, good light <span class='req'>*</span>","pf1":"Front","pf2":"Side","pf3":"Back","phs":"Tap to upload","fotonote":"🔒 Your photos are private and used only by Mario for your tracking. They are sent securely with the form.",
- "b4":"Training","q16":"Training experience <span class='req'>*</span>","e1":"Beginner","e2":"Intermediate","e3":"Advanced","q17":"Where will you train and what equipment do you have? <span class='req'>*</span>","q18":"How many days a week can you train? <span class='req'>*</span>","q19":"Any injury, discomfort or medical condition I should know?",
- "b5":"Nutrition & lifestyle","q20":"What times do you usually eat? (your routine)","q21":"Allergies, intolerances or foods you DON'T eat?","q22":"How well do you sleep?","s1":"Well 7-8h","s2":"OK 5-6h","s3":"Poorly under 5h","q23":"Daily stress level","st1":"Low","st2":"Medium","st3":"High","q24":"How much water do you drink per day?",
- "b6":"Your commitment","q25":"What has held you back before?","q26":"From 1 to 10, how committed are you right now? <span class='req'>*</span>","q27":"Anything else Mario should know (optional)",
+ "b3":"Measurements & photos","q12":"Measurements in cm — Waist / Hips / Chest / Arm / Thigh <span class='req'>*</span>","fotolbl":"3 required photos — tight sportswear, good light <span class='req'>*</span>","pf1":"Front","pf2":"Side","pf3":"Back","phs":"Tap to upload","fotonote":"🔒 Your photos are private and used only by Mario for your tracking. They are sent securely with the form.",
+ "b4":"Training","q16":"Training experience <span class='req'>*</span>","e1":"Beginner","e2":"Intermediate","e3":"Advanced","q17":"Where will you train and what equipment do you have? <span class='req'>*</span>","q18":"How many days a week can you train? <span class='req'>*</span>","q19":"Any injury, discomfort or medical condition I should know? <span class='req'>*</span>",
+ "b5":"Nutrition & lifestyle","q20":"What times do you usually eat? (your routine) <span class='req'>*</span>","q21":"Allergies, intolerances or foods you DON'T eat? <span class='req'>*</span>","q22":"How well do you sleep? <span class='req'>*</span>","s1":"Well 7-8h","s2":"OK 5-6h","s3":"Poorly under 5h","q23":"Daily stress level <span class='req'>*</span>","st1":"Low","st2":"Medium","st3":"High","q24":"How much water do you drink per day? <span class='req'>*</span>",
+ "b6":"Your commitment","q25":"What has held you back before? <span class='req'>*</span>","q26":"From 1 to 10, how committed are you right now? <span class='req'>*</span>","q27":"Anything else Mario should know (optional)",
  "agree":"I authorize Prada The Coach to use my information and photos to design, adjust and track my personalized plan. I understand this is a coaching service and does not replace medical advice. I confirm the information is true.",
  "send":"Send my questionnaire →",
  "foot":'Prada The Coach · <a href="mailto:prada@pradathecoach.com">prada@pradathecoach.com</a>'
